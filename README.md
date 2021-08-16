@@ -60,6 +60,43 @@ Will be triggered through the display operation and will enable the developer to
 > 
 > The Supplier Follow Up E-mail solution is a completely "Plug-and-play" procedure, meaning that you can use the e-mail process tackled on this documentation to send the follow up data through any other solutions that might have the information expected on the attachment file. 
 
+## Usage Example
+
+Here is a code with the implementation of the SALV Buddy class to serve as an example for future developments:
+```
+FORM display_alv.
+
+  IF r_alv IS NOT BOUND.
+
+    " Reserve screen space within the custom control for the ALV
+    " presentation at the screen 0100
+    DATA(lr_container) = NEW cl_gui_custom_container(
+        container_name = 'CC_REFERENCE_DATA'
+    ).
+
+    " Create the ALV object
+    r_alv = zma0_cl_salv_buddy=>factory(
+      EXPORTING
+          im_container = lr_container
+      CHANGING
+          ch_data      = t_reference_data
+    ).
+
+    " Set event for custom columns preparation
+    SET HANDLER lcl_event=>handle_columns_preparation FOR r_alv.
+
+    " Display ALV report with CRUD options
+    r_alv->display( ).
+
+  ELSE.
+
+    r_alv->refresh( ).
+
+  ENDIF.
+
+ENDFORM.
+```
+
 ## Caveat & More Information
 
 > The **Eclipse 2021-03** version was used in the development phase of this project
