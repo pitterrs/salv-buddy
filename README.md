@@ -56,10 +56,6 @@ Will be triggered through the display operation and will enable the developer to
 * **ON_TOOLBAR_PREPARATION**
 Will be triggered through the display operation and will enable the developer to add or hide new buttons to the ALV toolbar considering the functionalities available at the class `CL_SALV_FUNCTIONS_LIST`.
 
-> **Note:**
-> 
-> The Supplier Follow Up E-mail solution is a completely "Plug-and-play" procedure, meaning that you can use the e-mail process tackled on this documentation to send the follow up data through any other solutions that might have the information expected on the attachment file. 
-
 ## Usage Example
 
 Here is a code with the implementation of the SALV Buddy class to serve as an example for future developments:
